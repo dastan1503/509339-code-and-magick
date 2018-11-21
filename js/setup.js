@@ -55,11 +55,11 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .querySelector('.setup-similar-item');
 
 var fragment = document.createDocumentFragment();
-for (var i = 0; i < randomWizards.length; i++) {
+for (var j = 0; j < randomWizards.length; j++) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
-  wizardElement.querySelector('.setup-similar-label').textContent = randomWizards[i].name;
-  wizardElement.querySelector('.wizard-coat').style.fill = randomWizards[i].coatColor;
-  wizardElement.querySelector('.wizard-eyes').style.fill = randomWizards[i].eyesColor;
+  wizardElement.querySelector('.setup-similar-label').textContent = randomWizards[j].name;
+  wizardElement.querySelector('.wizard-coat').style.fill = randomWizards[j].coatColor;
+  wizardElement.querySelector('.wizard-eyes').style.fill = randomWizards[j].eyesColor;
   fragment.appendChild(wizardElement);
 }
 
