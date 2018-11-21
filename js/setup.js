@@ -48,3 +48,22 @@ var randomWizards = [];
 for (var i = 0; i < 4; i++) {
   randomWizards[i] = generateRandomWizard(arrNames, arrFamilies, arrCoatColor, arrEyesColor);
 }
+
+var similarListElement = document.querySelector('.setup-similar-list');
+var similarWizardTemplate = document.querySelector('#similar-wizard-template')
+    .content
+    .querySelector('.setup-similar-item');
+
+var fragment = document.createDocumentFragment();
+for (var i = 0; i < randomWizards.length; i++) {
+  var wizardElement = similarWizardTemplate.cloneNode(true);
+  wizardElement.querySelector('.setup-similar-label').textContent = randomWizards[i].name;
+  wizardElement.querySelector('.wizard-coat').style.fill = randomWizards[i].coatColor;
+  wizardElement.querySelector('.wizard-eyes').style.fill = randomWizards[i].eyesColor;
+  fragment.appendChild(wizardElement);
+}
+
+similarListElement.appendChild(fragment);
+
+var setupSimilar = document.querySelector('.setup-similar');
+setupSimilar.classList.remove('hidden');
