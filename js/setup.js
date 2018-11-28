@@ -1,8 +1,5 @@
 'use strict';
 
-var setupBlock = document.querySelector('.setup');
-setupBlock.classList.remove('hidden');
-
 var arrNames = [
   'Иван',
   'Хуан Себастьян',
@@ -67,3 +64,49 @@ similarListElement.appendChild(fragment);
 
 var setupSimilar = document.querySelector('.setup-similar');
 setupSimilar.classList.remove('hidden');
+
+var switchWizardPreferences = function () {
+  var popup = document.querySelector('.setup');
+  var buttonOpen = document.querySelector('.setup-open');
+  var userIcon = document.querySelector('.setup-open-icon');
+  var buttonClose = document.querySelector('.setup-close');
+  var KEYCODE_ESC = 27;
+  var KEYCODE_ENTER = 13;
+
+  var openPopup = function () {
+    popup.classList.remove('hidden');
+  };
+  var closePopup = function () {
+    popup.classList.add('hidden');
+  };
+  var closePopupEsc = function () {
+    document.addEventListener('keydown', function (evt) {
+      if (evt.keyCode === KEYCODE_ESC) {
+        closePopup();
+      }
+    });
+  };
+
+  buttonOpen.addEventListener('click', function () {
+    openPopup();
+    closePopupEsc();
+  });
+
+  userIcon.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === KEYCODE_ENTER) {
+      openPopup();
+      closePopupEsc();
+    }
+  });
+
+  buttonClose.addEventListener('click', function () {
+    closePopup();
+  });
+
+  buttonClose.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === KEYCODE_ENTER) {
+      closePopup();
+    }
+  });
+};
+switchWizardPreferences();
