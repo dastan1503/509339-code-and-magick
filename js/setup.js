@@ -85,6 +85,7 @@ var switchWizardPreferences = function () {
   };
   var closePopup = function () {
     popup.classList.add('hidden');
+    popup.style = '';
     document.removeEventListener('keydown', closePopupEsc);
   };
   var closePopupEsc = function () {
